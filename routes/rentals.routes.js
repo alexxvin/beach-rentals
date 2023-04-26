@@ -48,12 +48,11 @@ router.get("/rentals/:rentalId", (req, res, next) => {
     res.status(400).json({ message: "Specified id is not valid" });
     return;
   }
-  Rentals.findById(rentalId).then((rental) => {
-    res
-      .status(200)
-      .json(rental)
-      .catch((error) => res.json(error));
-  });
+  Rentals.findById(rentalId)
+    .then((rental) => {
+      res.status(200).json(rental);
+    })
+    .catch((error) => res.json(error));
 });
 
 router.put("/rentals/:rentalId", (req, res, next) => {
@@ -63,11 +62,11 @@ router.put("/rentals/:rentalId", (req, res, next) => {
     res.status(400).json({ message: "Specified id is not valid" });
     return;
   }
-  Rentals.findByIdAndUpdate(rentalId, req.body, { new: true }).then(
-    (updatedRental) => {
-      res.json(updatedRental).catch((error) => res.json(error));
-    }
-  );
+  Rentals.findByIdAndUpdate(rentalId, req.body, { new: true })
+    .then((updatedRental) => {
+      res.json(updatedRental);
+    })
+    .catch((error) => res.json(error));
 });
 
 router.delete("/rentals/:rentalId", (req, res, next) => {
