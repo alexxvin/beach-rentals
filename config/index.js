@@ -22,12 +22,12 @@ module.exports = (app) => {
   app.set("trust proxy", 1);
 
   // controls a very specific header to pass headers from the frontend
-  app.use(
-    cors({
-      origin: [FRONTEND_URL, "https://beach-rentals.vercel.app/location"],
-    })
-  );
-
+  // app.use(
+  //   cors({
+  //     origin: [FRONTEND_URL, "https://beach-rentals.vercel.app/location"],
+  //   })
+  // );
+  app.use(cors(true));
   // In development environment the app logs
   app.use(logger("dev"));
 
@@ -36,3 +36,10 @@ module.exports = (app) => {
   app.use(express.urlencoded({ extended: false }));
   app.use(cookieParser());
 };
+
+// app.use(
+//   cors({
+//     origin: [...FRONTEND_URL.split(',')],
+//     exposedHeaders: ['Access-Control-Allow-Origin'],
+//   })
+// );
