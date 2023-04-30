@@ -24,7 +24,7 @@ module.exports = (app) => {
   // controls a very specific header to pass headers from the frontend
   app.use(
     cors({
-      origin: [FRONTEND_URL, "https://beach-rentals-client.onrender.com"],
+      origin: [FRONTEND_URL, "https://beach-rentals.vercel.app/location"],
     })
   );
 
